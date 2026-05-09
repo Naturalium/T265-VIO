@@ -7,9 +7,8 @@ IMU와 스테레오 카메라를 **Extended Kalman Filter**로 융합하여 6-DO
 
 ## 시연 영상
 
-[![VIO Demo](Study/VIO/T265/preview.jpg)](https://github.com/Naturalium/T265-VIO/raw/master/Study/VIO/T265/VIO_output%202026-05-09%2018-52-17.webm)
+https://github.com/user-attachments/assets/2089b21b-1e76-410b-9ac8-2402c1699931
 
-> 이미지 클릭 시 영상 다운로드/재생  
 > 왼쪽: 피시아이 카메라 + LK 특징점 추적 / 오른쪽: 깊이 맵 + EKF 추적 궤적
 
 ---
