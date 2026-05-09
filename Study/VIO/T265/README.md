@@ -81,7 +81,28 @@ x = [ p(3)  v(3)  q(4)  b_a(3)  b_g(3) ]
 
 ## 설치 및 실행
 
-### 요구사항
+### 1. librealsense SDK (T265 카메라 사용 시)
+
+T265는 Intel이 공식 지원을 종료했기 때문에 최신 Ubuntu에서 빌드하려면 패치가 필요합니다.  
+Ubuntu 24.04 / GCC 13 환경에서 빌드된 **사전 빌드 바이너리**를 아래 레포에서 제공합니다:
+
+> **[Naturalium/librealsense-t265](https://github.com/Naturalium/librealsense-t265)**  
+> — pybind11 v2.11.1 업데이트, GCC 13 컴파일 오류 수정 적용  
+> — [Releases](https://github.com/Naturalium/librealsense-t265/releases/tag/v2.51.1)에서 `librealsense2.so.2.51.1` 다운로드 후 설치
+
+```bash
+# 바이너리 설치
+sudo cp librealsense2.so.2.51.1 /usr/local/lib/
+sudo ln -sf /usr/local/lib/librealsense2.so.2.51.1 /usr/local/lib/librealsense2.so.2
+sudo ln -sf /usr/local/lib/librealsense2.so.2 /usr/local/lib/librealsense2.so
+sudo ldconfig
+
+# T265 USB 권한 설정 (librealsense-t265 소스 클론 후)
+sudo cp config/99-realsense-libusb.rules /etc/udev/rules.d/
+sudo udevadm control --reload-rules && sudo udevadm trigger
+```
+
+### 2. Python 패키지
 
 ```bash
 pip install numpy>=1.24 opencv-python>=4.8
@@ -126,4 +147,10 @@ python generate_vio_doc.py
 
 - **Intel RealSense T265**: 듀얼 fisheye (Kannala-Brandt, 170° FOV) + BMI055 IMU (200 Hz)
 - 스테레오 베이스라인: 64 mm
-- librealsense SDK (T265 지원 레거시 브랜치 별도 빌드 필요)
+
+## 관련 레포지토리
+
+| 레포 | 설명 |
+|------|------|
+| [Naturalium/librealsense-t265](https://github.com/Naturalium/librealsense-t265) | Ubuntu 24.04 / GCC 13용 librealsense v2.51.1 패치 빌드본 |
+| [IntelRealSense/librealsense](https://github.com/IntelRealSense/librealsense) | 업스트림 원본 (v2.51.1이 T265 마지막 지원) |
