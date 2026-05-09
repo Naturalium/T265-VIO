@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv*/
+*.egg-info/
+
+# Build artifacts
+build/
+dist/
+*.so
+*.a
+*.o
+
+# Large external SDK (소스 포함, 빌드 결과물 제외)
+librealsense-t265/
+
+# ML models & logs (너무 큰 바이너리)
+models/
+logs/
+*.gguf
+*.bin
+*.ggml
+
+# LLM inference engine
+llama.cpp/
+
+# Other project bots (별도 관리)
+futures_bot/
+kr_stock_bot/
+stock_bot/
+trading_bot/
+trading_bot_scalp/
+wave_notifier/
+websearch/
+
+# Runtime / agent state
+.openclaw/
+.venv_krx/
+memory/
+WIP.json
+*.md.bak
+
+# IDE
+.vscode/
+*.swp
